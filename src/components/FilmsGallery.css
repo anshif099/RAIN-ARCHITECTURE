@@ -2,7 +2,7 @@
   position: absolute;
   inset: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   background: #000;
   z-index: 18; /* Sits above MainView & FilmsSection but below Fixed Navbar */
@@ -172,6 +172,7 @@
 @media (max-width: 768px) {
   .gallery-columns {
     flex-direction: column;
+    height: 100dvh;
   }
   .gallery-col {
     width: 100%;
@@ -181,6 +182,11 @@
   }
   .col-overlay {
     padding: 24px;
+    padding-bottom: 24px;
+  }
+  /* Extra bottom padding on the final column to guarantee the Vertigo text completely clears the phone's bottom navigation line */
+  .gallery-col:last-child .col-overlay {
+    padding-bottom: clamp(36px, 8dvh, 52px) !important;
   }
   .play-button-container {
     flex-direction: row;
