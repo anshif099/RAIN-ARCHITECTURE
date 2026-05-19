@@ -253,14 +253,16 @@
 
 @media (max-width: 768px) {
   .contact-sec {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .contact-left {
     width: 100%;
     height: 52%;
-    padding: 42px 28px 28px 28px;
+    padding: 36px 28px 70px 28px;
     justify-content: flex-start;
+    border-right: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   .contact-brand-container {
@@ -268,6 +270,7 @@
     top: 0;
     left: 0;
     margin-bottom: 24px;
+    display: none; /* remove redundant brand on mobile text */
   }
 
   .contact-info-block {
@@ -275,14 +278,19 @@
   }
 
   .contact-title {
+    font-size: 24px !important;
+    line-height: 1.25 !important;
     margin-bottom: 12px;
   }
 
   .contact-desc {
+    font-size: 13px !important;
+    line-height: 1.62 !important;
     margin-bottom: 20px;
   }
 
   .contact-email-link {
+    font-size: 15px !important;
     margin-bottom: 16px;
   }
 
@@ -296,7 +304,7 @@
   }
 
   .contact-back-pill {
-    bottom: 24px;
+    bottom: 20px;
     right: 24px;
     padding: 8px 18px;
   }
