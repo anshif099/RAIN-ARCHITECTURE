@@ -16,8 +16,8 @@ export default function ContactSection({ status, onBackToTop }) {
             We work in English, Spanish and Catalan. Get in touch to discuss your project or request a quote.
           </p>
 
-          <a href="https://www.rainhopes.com" target="_blank" rel="noopener noreferrer" className="contact-email-link">
-            www.rainhopes.com
+          <a href="https://www.rainhopes.in" target="_blank" rel="noopener noreferrer" className="contact-email-link">
+            www.rainhopes.in
           </a>
 
           {/* Social Links (Instagram) */}
@@ -55,8 +55,8 @@ export default function ContactSection({ status, onBackToTop }) {
 
         {/* Large centered white website text exactly as in screenshot */}
         <div className="contact-center-email">
-          <a href="https://www.rainhopes.com" target="_blank" rel="noopener noreferrer">
-            www.rainhopes.com
+          <a href="https://www.rainhopes.in" target="_blank" rel="noopener noreferrer">
+            www.rainhopes.in
           </a>
         </div>
 
