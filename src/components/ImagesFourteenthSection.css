@@ -107,14 +107,29 @@
 }
 
 /* Mobile responsive styles */
+
 @media (max-width: 768px) {
-  .images14-project-label {
-    bottom: 24px;
-    left: 24px;
-    font-size: 12px;
+  .images14-section {
+    flex-direction: column-reverse !important;
+  }
+  .images14-panel {
+    width: 100% !important;
+    height: 52% !important;
+    padding: 36px 24px 70px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    box-sizing: border-box !important;
+  }
+  .images14-showcase {
+    width: 100% !important;
+    height: 48% !important;
+  }
+  .project-title, .project-architect {
+    font-size: 11.5px !important;
   }
   .images14-next-pill {
-    bottom: 24px;
-    right: 24px;
+    bottom: 20px !important;
+    right: 24px !important;
   }
 }

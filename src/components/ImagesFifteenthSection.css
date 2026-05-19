@@ -164,34 +164,29 @@
 }
 
 /* Mobile responsive styles */
+
 @media (max-width: 768px) {
-  .images15-sec {
-    flex-direction: column-reverse; /* Reverses order so Doha showcase is on top */
+  .images15-section {
+    flex-direction: column-reverse !important;
   }
   .images15-panel {
-    width: 100%;
-    height: 45%;
-    padding: 60px 24px 60px 24px;
-  }
-  .offices-container {
-    max-height: calc(100% - 40px);
+    width: 100% !important;
+    height: 52% !important;
+    padding: 36px 24px 70px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    box-sizing: border-box !important;
   }
   .images15-showcase {
-    width: 100%;
-    height: 55%;
+    width: 100% !important;
+    height: 48% !important;
   }
-  .images15-project-label {
-    bottom: 20px;
-    left: 24px;
-    font-size: 12px;
-  }
-  .images15-showcase-label {
-    bottom: 20px;
-    left: 24px;
-    font-size: 12px;
+  .project-title, .project-architect {
+    font-size: 11.5px !important;
   }
   .images15-next-pill {
-    bottom: 24px;
-    right: 24px;
+    bottom: 20px !important;
+    right: 24px !important;
   }
 }

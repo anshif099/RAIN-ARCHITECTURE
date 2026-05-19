@@ -169,6 +169,7 @@
 }
 
 /* Mobile responsive styles */
+
 @media (max-width: 768px) {
   .images-section {
     flex-direction: column-reverse !important;
@@ -192,29 +193,5 @@
   .images-next-pill {
     bottom: 20px !important;
     right: 24px !important;
-  }
-}
-  .images-panel {
-    width: 100%;
-    height: 40%;
-    padding: 60px 24px 20px 24px;
-  }
-  .images-showcase {
-    width: 100%;
-    height: 60%;
-  }
-  .images-project-info {
-    bottom: 24px;
-    left: 24px;
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 6px 12px;
-  }
-  .project-title, .project-architect {
-    font-size: 11.5px;
-  }
-  .images-next-pill {
-    bottom: 24px;
-    right: 24px;
   }
 }

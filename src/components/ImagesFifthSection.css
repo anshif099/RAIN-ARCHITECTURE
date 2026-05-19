@@ -158,31 +158,29 @@
 }
 
 /* Mobile responsive styles */
+
 @media (max-width: 768px) {
-  .images5-sec {
-    flex-direction: column-reverse; /* Reverses order on mobile so walkeweg A is on top */
+  .images5-section {
+    flex-direction: column-reverse !important;
   }
   .images5-panel {
-    width: 100%;
-    height: 45%;
-    padding: 60px 24px 60px 24px;
-  }
-  .walkeB-container {
-    max-height: calc(100% - 40px);
+    width: 100% !important;
+    height: 52% !important;
+    padding: 36px 24px 70px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    box-sizing: border-box !important;
   }
   .images5-showcase {
-    width: 100%;
-    height: 55%;
+    width: 100% !important;
+    height: 48% !important;
   }
-  .images5-project-label {
-    bottom: 20px;
-    left: 24px;
-    font-size: 12px;
-    flex-wrap: wrap;
-    gap: 6px;
+  .project-title, .project-architect {
+    font-size: 11.5px !important;
   }
   .images5-next-pill {
-    bottom: 24px;
-    right: 24px;
+    bottom: 20px !important;
+    right: 24px !important;
   }
 }
