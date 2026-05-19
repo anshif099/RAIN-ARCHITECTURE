@@ -1,0 +1,173 @@
+/* =========================================================
+   Navbar — fixed, transparent on top of the hero
+   ========================================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 36px;
+  /* subtle gradient so text stays readable over the video */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18) 0%,
+    transparent 100%
+  );
+}
+
+/* Hide the entire global navbar when 360 tour modal is active to prevent blocking click events */
+body.tour-modal-active .navbar {
+  display: none !important;
+}
+
+/* ---- Logo ---- */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar-wordmark {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #111;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  /* visible on white right panel / any light surface */
+  mix-blend-mode: normal;
+}
+
+.navbar-logo:hover .navbar-wordmark {
+  opacity: 0.65;
+}
+
+/* ---- Right section ---- */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Contact button */
+.navbar-contact {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 1px solid #111;
+  border-radius: 100px;
+  letter-spacing: 0.03em;
+  transition: background 0.22s, color 0.22s;
+}
+
+.navbar-contact:hover {
+  background: #111;
+  color: #fff;
+}
+
+/* Hamburger button */
+.navbar-menu-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #1a1a1a;
+  cursor: pointer;
+  padding: 10px;
+  transition: background 0.2s;
+}
+
+.navbar-menu-btn:hover {
+  background: #333;
+}
+
+.navbar-menu-btn span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Animated to X when open */
+.navbar-menu-btn.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar-menu-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+.navbar-menu-btn.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---- Full-screen overlay menu ---- */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(15, 12, 9, 0.96);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.overlay-close {
+  position: absolute;
+  top: 28px;
+  right: 36px;
+  font-size: 22px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.overlay-close:hover { opacity: 1; }
+
+.overlay-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: center;
+}
+
+.overlay-link {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.overlay-link:hover {
+  color: #c07a2d;
+}

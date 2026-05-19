@@ -1,0 +1,104 @@
+.about-image-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+}
+
+.slider-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slider-slide.slide--active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* Slide 1: Sketch style */
+.slide-sketch {
+  background: #fff;
+}
+
+.sketch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.95;
+  transform: scale(1.04);
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide--active .sketch-img {
+  transform: scale(1);
+}
+
+/* Slide 2: Realistic Render style */
+.slide-realistic {
+  background: #000;
+}
+
+.realistic-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.04);
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide--active .realistic-img {
+  transform: scale(1);
+}
+
+.realistic-caption {
+  position: absolute;
+  bottom: 36px;
+  /* Align to the left side of the realistic image on the right pane */
+  /* Since the left white pane is 35%, we want the caption to be pushed right so it's not hidden by the text pane in case it overlaps, but on page 2 the text pane is hidden anyway! So 40px from left is perfect! */
+  left: 40px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+}
+
+.slide--active .realistic-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.caption-bold {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.caption-light {
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .realistic-caption {
+    bottom: 24px;
+    left: 24px;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,141 @@
+/* =========================================================
+   HeroSection — split layout (video | content)
+   ========================================================= */
+
+.hero-section {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ---- Left: video panel ---- */
+.hero-video-panel {
+  position: relative;
+  flex: 0 0 75%;
+  width: 75%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ---- Right: content panel ---- */
+.hero-content-panel {
+  flex: 0 0 25%;
+  width: 25%;
+  height: 100%;
+  background: #faf9f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 44px 44px 44px;
+  position: relative;
+}
+
+.hero-content-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.hero-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a7560;
+}
+
+.hero-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.hero-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #444;
+  max-width: 300px;
+  margin: 0;
+}
+
+.hero-description em {
+  font-style: normal;
+  color: #c07a2d;
+}
+
+/* ---- Next page arrow ---- */
+.hero-next {
+  position: absolute;
+  bottom: 36px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s, transform 0.3s;
+}
+
+.hero-next:hover {
+  opacity: 1;
+  transform: translateY(4px);
+}
+
+.next-arrow {
+  color: #1a1a1a;
+  animation: bounceDown 2s ease-in-out infinite;
+}
+
+.next-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  color: #1a1a1a;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+/* =========================================================
+   Responsive — tablet / mobile: stack vertically
+   ========================================================= */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .hero-video-panel {
+    flex: none;
+    width: 100%;
+    height: 55vh;
+  }
+
+  .hero-content-panel {
+    flex: none;
+    width: 100%;
+    height: auto;
+    padding: 40px 28px 40px 28px;
+  }
+}

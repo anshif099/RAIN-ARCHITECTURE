@@ -1,0 +1,283 @@
+.vt-sec {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #fff;
+  z-index: 1; /* Sits above ImagesSeventeenthSection but below Fixed Navbar */
+  transform: translateY(100%);
+  transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1);
+  display: flex;
+}
+
+.vt-sec.future {
+  transform: translateY(100%);
+}
+
+.vt-sec.active {
+  transform: translateY(0);
+}
+
+.vt-sec.past {
+  transform: translateY(-100%);
+}
+
+/* Left panel content */
+.vt-panel {
+  width: 35%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 54px;
+  box-sizing: border-box;
+  z-index: 2;
+  position: relative;
+}
+
+.vt-content-wrapper {
+  max-width: 420px;
+  font-family: 'Inter', sans-serif;
+}
+
+.vt-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.vt-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #111;
+  margin: 0 0 28px 0;
+  letter-spacing: -0.02em;
+}
+
+.vt-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+}
+
+/* Right side 3D viewer */
+.vt-showcase {
+  width: 65%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #0b0b0b;
+}
+
+.vt-viewer-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.vt-viewer-container:active {
+  cursor: grabbing;
+}
+
+.vt-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Loading state spinner */
+.vt-loader {
+  position: absolute;
+  inset: 0;
+  background: #0b0b0b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  z-index: 8;
+}
+
+.vt-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: vtSpin 0.8s linear infinite;
+}
+
+@keyframes vtSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Project Label Overlay */
+.vt-project-label {
+  position: absolute;
+  bottom: 36px;
+  left: 44px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #fff;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.vt-proj-bold {
+  font-weight: 700;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.55);
+}
+
+.vt-proj-regular {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.55);
+}
+
+.vt-prize-badge {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* 360 drag helper instruction */
+.vt-instruction {
+  position: absolute;
+  top: 36px;
+  right: 44px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  pointer-events: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+.vt-instruction svg {
+  animation: vtWobble 2.5s ease-in-out infinite;
+}
+
+@keyframes vtWobble {
+  0%, 100% { transform: rotate(0); }
+  25%       { transform: rotate(-8deg); }
+  75%       { transform: rotate(8deg); }
+}
+
+/* Next button — Pill shape */
+.vt-next-pill {
+  position: absolute;
+  bottom: 36px;
+  right: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 30px;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #111;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s, transform 0.2s;
+  animation: vtBounce 2.2s ease-in-out infinite;
+  z-index: 10;
+}
+
+.vt-next-pill:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.vt-next-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.vt-next-pill svg {
+  transition: transform 0.2s;
+}
+
+.vt-next-pill:hover svg {
+  transform: translateY(1px);
+}
+
+@keyframes vtBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .vt-sec {
+    flex-direction: column;
+  }
+  .vt-panel {
+    width: 100%;
+    height: 45%;
+    padding: 60px 24px;
+    justify-content: flex-start;
+  }
+  .vt-title {
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+  .vt-desc {
+    font-size: 13px;
+  }
+  .vt-showcase {
+    width: 100%;
+    height: 55%;
+  }
+  .vt-project-label {
+    bottom: 24px;
+    left: 24px;
+    font-size: 11px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .vt-instruction {
+    top: 24px;
+    right: 24px;
+    font-size: 10px;
+    padding: 8px 14px;
+  }
+  .vt-next-pill {
+    bottom: 24px;
+    right: 24px;
+  }
+}

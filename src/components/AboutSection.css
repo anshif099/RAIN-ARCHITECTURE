@@ -1,0 +1,131 @@
+/* =========================================================
+   AboutSection — left text panel + right image
+   ========================================================= */
+
+.about-section {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+/* ---- Left: content panel ---- */
+.about-content-panel {
+  flex: 0 0 35%;
+  width: 35%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 52px 52px 52px;
+  position: relative;
+}
+
+.about-content-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a7560;
+}
+
+.about-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  color: #111;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.about-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: #444;
+  max-width: 320px;
+  margin: 0;
+}
+
+.about-description em {
+  font-style: normal;
+  color: #b8681a;
+}
+
+/* ---- Next page ---- */
+.about-next {
+  position: absolute;
+  bottom: 36px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s, transform 0.3s;
+}
+
+.about-next:hover {
+  opacity: 1;
+  transform: translateY(3px);
+}
+
+.about-next-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #111;
+}
+
+/* ---- Right: image panel ---- */
+.about-image-panel {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .about-content-panel {
+    flex: none;
+    width: 100%;
+    height: auto;
+    padding: 100px 28px 40px 28px;
+  }
+
+  .about-image-panel {
+    flex: none;
+    width: 100%;
+    height: 50vh;
+  }
+}

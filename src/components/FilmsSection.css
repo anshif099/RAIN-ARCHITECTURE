@@ -1,0 +1,144 @@
+.films-section {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #fff;
+  z-index: 15; /* Sits above the MainView but below the Fixed Navbar */
+  transform: translateY(100%); /* Slides up from the bottom */
+  transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1);
+  display: flex;
+}
+
+.films-section--active {
+  transform: translateY(0);
+}
+
+/* Left side content panel */
+.films-panel {
+  width: 35%;
+  height: 100%;
+  background: #faf9f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 80px 44px 44px 44px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.films-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a7560;
+}
+
+.films-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(24px, 2.6vw, 38px);
+  font-weight: 800;
+  color: #111;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.films-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: #444;
+  max-width: 280px;
+  margin: 0;
+}
+
+.films-desc em {
+  font-style: normal;
+  color: #b8681a;
+}
+
+/* Right side video player */
+.films-video-container {
+  width: 65%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.films-video-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Premium Pill next page indicator */
+.films-next-pill {
+  position: absolute;
+  bottom: 36px;
+  right: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 30px;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #111;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s, transform 0.2s;
+  animation: filmsBounce 2.2s ease-in-out infinite;
+  z-index: 10;
+}
+
+.films-next-pill:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.films-next-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.films-next-pill svg {
+  transition: transform 0.2s;
+}
+
+.films-next-pill:hover svg {
+  transform: translateY(1px);
+}
+
+@keyframes filmsBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .films-section {
+    flex-direction: column;
+  }
+  .films-panel {
+    width: 100%;
+    height: 40%;
+    padding: 60px 24px 20px 24px;
+  }
+  .films-video-container {
+    width: 100%;
+    height: 60%;
+  }
+  .films-next-pill {
+    bottom: 24px;
+    right: 24px;
+  }
+}

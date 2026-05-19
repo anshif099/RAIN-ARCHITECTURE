@@ -1,0 +1,188 @@
+.images5-sec {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #fff;
+  z-index: 13; /* Sits above ImagesFourthSection but below Fixed Navbar */
+  transform: translateY(100%); /* Default starting position (future) */
+  transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1);
+  display: flex;
+}
+
+.images5-sec.future {
+  transform: translateY(100%);
+}
+
+.images5-sec.active {
+  transform: translateY(0);
+}
+
+.images5-sec.past {
+  transform: translateY(-100%);
+}
+
+/* Left side full-bleed walkeweg A showcase */
+.images5-showcase {
+  width: 65%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.images5-bg-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Project Label and Badge at bottom-left corner */
+.images5-project-label {
+  position: absolute;
+  bottom: 36px;
+  left: 44px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 5;
+}
+
+.project-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+  background: #111;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.project-type-bold-white {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
+}
+
+.project-partner-regular-white {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  margin-left: 4px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
+}
+
+/* Right side panel containing walkeweg B render */
+.images5-panel {
+  width: 35%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 80px 44px 80px 44px;
+  box-sizing: border-box;
+  z-index: 2;
+  position: relative;
+}
+
+.walkeB-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: calc(100% - 60px);
+  overflow: hidden;
+}
+
+.walkeB-img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+/* Next button — Pill shape */
+.images5-next-pill {
+  position: absolute;
+  bottom: 36px;
+  right: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 30px;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #111;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s, transform 0.2s;
+  animation: images5Bounce 2.2s ease-in-out infinite;
+  z-index: 10;
+}
+
+.images5-next-pill:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.images5-next-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.images5-next-pill svg {
+  transition: transform 0.2s;
+}
+
+.images5-next-pill:hover svg {
+  transform: translateY(1px);
+}
+
+@keyframes images5Bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .images5-sec {
+    flex-direction: column-reverse; /* Reverses order on mobile so walkeweg A is on top */
+  }
+  .images5-panel {
+    width: 100%;
+    height: 45%;
+    padding: 60px 24px 60px 24px;
+  }
+  .walkeB-container {
+    max-height: calc(100% - 40px);
+  }
+  .images5-showcase {
+    width: 100%;
+    height: 55%;
+  }
+  .images5-project-label {
+    bottom: 20px;
+    left: 24px;
+    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .images5-next-pill {
+    bottom: 24px;
+    right: 24px;
+  }
+}

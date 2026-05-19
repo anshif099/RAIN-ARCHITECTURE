@@ -1,0 +1,349 @@
+.films-gallery {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  z-index: 18; /* Sits above MainView & FilmsSection but below Fixed Navbar */
+  transform: translateY(100%);
+  transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.films-gallery--active {
+  transform: translateY(0);
+}
+
+.gallery-columns {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-col {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.gallery-col:last-child {
+  border-right: none;
+}
+
+.col-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.03);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gallery-col:hover .col-bg-img {
+  transform: scale(1);
+}
+
+/* Vignette overlay */
+.col-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.2) 60%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 44px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+/* Play button and texts */
+.play-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.play-circle {
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.25);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.gallery-col:hover .play-circle {
+  background: #fff;
+  color: #000;
+  transform: scale(1.08);
+}
+
+.play-icon-svg {
+  margin-left: 2px; /* Visual centering of triangle */
+  transition: color 0.3s;
+}
+
+.gallery-col:hover .play-icon-svg {
+  color: #000;
+}
+
+.play-text-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.play-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(20px, 2.2vw, 32px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.play-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(20px, 2.2vw, 32px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  opacity: 0.95;
+}
+
+/* Pill-shaped Next indicator */
+.gallery-next {
+  position: absolute;
+  bottom: 36px;
+  right: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 30px;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #111;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s, transform 0.2s;
+  animation: galleryBounce 2.2s ease-in-out infinite;
+  z-index: 10;
+}
+
+.gallery-next:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.gallery-next-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.next-chevron-svg {
+  transition: transform 0.2s;
+}
+
+.gallery-next:hover .next-chevron-svg {
+  transform: translateY(1px);
+}
+
+@keyframes galleryBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gallery-columns {
+    flex-direction: column;
+  }
+  .gallery-col {
+    width: 100%;
+    height: 33.333%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .col-overlay {
+    padding: 24px;
+  }
+  .play-button-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+  }
+  .gallery-next {
+    bottom: 24px;
+    right: 24px;
+  }
+}
+
+/* ── Vimeo Player Overlay Modal ──────────────────────── */
+.films-modal {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 36px;
+  right: 36px;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.3s;
+  z-index: 110;
+}
+
+.modal-close-btn:hover {
+  background: #fff;
+  color: #000;
+  transform: scale(1.08);
+}
+
+.modal-content-wrapper {
+  width: 90%;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.modal-video-pane {
+  flex: 1.8;
+  width: 100%;
+}
+
+.iframe-aspect-ratio-box {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background: #111;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.modal-iframe-el {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.modal-info-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.modal-info-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 800;
+  margin: 0 0 15px 0;
+  letter-spacing: -0.02em;
+}
+
+.modal-info-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: #bbb;
+  margin: 0 0 35px 0;
+  max-width: 360px;
+}
+
+.modal-metadata {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 25px;
+}
+
+.meta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.meta-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  font-weight: 600;
+}
+
+.meta-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  color: #eee;
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Modal Responsive overrides */
+@media (max-width: 992px) {
+  .modal-content-wrapper {
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    width: 95%;
+  }
+  .modal-video-pane {
+    flex: none;
+    width: 100%;
+  }
+  .modal-info-pane {
+    flex: none;
+    width: 100%;
+  }
+  .modal-close-btn {
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+}
