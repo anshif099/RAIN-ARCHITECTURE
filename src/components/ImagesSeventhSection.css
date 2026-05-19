@@ -143,7 +143,7 @@
 /* Mobile responsive styles */
 
 @media (max-width: 768px) {
-  .images7-section {
+  .images7-sec {
     flex-direction: column-reverse !important;
   }
   .images7-panel {

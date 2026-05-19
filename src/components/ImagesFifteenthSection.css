@@ -166,7 +166,7 @@
 /* Mobile responsive styles */
 
 @media (max-width: 768px) {
-  .images15-section {
+  .images15-sec {
     flex-direction: column-reverse !important;
   }
   .images15-panel {
