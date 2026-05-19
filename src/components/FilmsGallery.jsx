@@ -90,7 +90,6 @@ export default function FilmsGallery({ active, onNext, activeModal, setActiveMod
                   title={`${activeModal.title} Film`}
                   frameBorder="0"
                   allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
                   className="modal-iframe-el"
                 ></iframe>
               </div>

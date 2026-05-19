@@ -23,12 +23,16 @@ import ImagesSeventeenthSection from '../components/ImagesSeventeenthSection'
 import VirtualTourSection from '../components/VirtualTourSection'
 import TourSection from '../components/TourSection'
 import ContactSection from '../components/ContactSection'
+import SolarisTourModal from '../components/SolarisTourModal'
+import VertigoTourModal from '../components/VertigoTourModal'
 import './HomePage.css'
 
 export default function HomePage() {
   // 0: Hero, ..., 22: Virtual Tour, 23: 360 Tours (Solaris + Vertigo), 24: Contact Section
   const [page, setPage] = useState(0)
   const [activeModal, setActiveModal] = useState(null)
+  const [solarisOpen, setSolarisOpen] = useState(false)
+  const [vertigoOpen, setVertigoOpen] = useState(false)
   const locked = useRef(false)
 
   const goTo = (targetPage) => {
@@ -43,24 +47,24 @@ export default function HomePage() {
   // Wheel
   useEffect(() => {
     const onWheel = (e) => {
-      if (activeModal || document.body.classList.contains('tour-modal-active')) return
+      if (activeModal || solarisOpen || vertigoOpen || document.body.classList.contains('tour-modal-active')) return
       e.preventDefault()
       if (e.deltaY > 0) goTo(page + 1)
       else goTo(page - 1)
     }
     window.addEventListener('wheel', onWheel, { passive: false })
     return () => window.removeEventListener('wheel', onWheel)
-  }, [page, activeModal])
+  }, [page, activeModal, solarisOpen, vertigoOpen])
 
   // Touch
   const touchY = useRef(null)
   useEffect(() => {
     const onStart = (e) => {
-      if (activeModal || document.body.classList.contains('tour-modal-active')) return
+      if (activeModal || solarisOpen || vertigoOpen || document.body.classList.contains('tour-modal-active')) return
       touchY.current = e.touches[0].clientY
     }
     const onEnd = (e) => {
-      if (activeModal || document.body.classList.contains('tour-modal-active')) return
+      if (activeModal || solarisOpen || vertigoOpen || document.body.classList.contains('tour-modal-active')) return
       if (touchY.current === null) return
       const delta = touchY.current - e.changedTouches[0].clientY
       if (Math.abs(delta) > 40) goTo(delta > 0 ? page + 1 : page - 1)
@@ -72,11 +76,11 @@ export default function HomePage() {
       window.removeEventListener('touchstart', onStart)
       window.removeEventListener('touchend', onEnd)
     }
-  }, [page, activeModal])
+  }, [page, activeModal, solarisOpen, vertigoOpen])
 
   return (
     <main className="home-page" id="home">
-      {!activeModal && <Navbar onNavigate={goTo} />}
+      {!activeModal && !solarisOpen && !vertigoOpen && <Navbar onNavigate={goTo} />}
       <MainView page={page} goTo={goTo} />
       <FilmsSection active={page === 3} onNext={() => goTo(4)} />
       <FilmsGallery 
@@ -103,8 +107,17 @@ export default function HomePage() {
       <ImagesSixteenthSection status={page === 20 ? 'active' : page > 20 ? 'past' : 'future'} onNext={() => goTo(21)} />
       <ImagesSeventeenthSection status={page === 21 ? 'active' : page > 21 ? 'past' : 'future'} onNext={() => goTo(22)} />
       <VirtualTourSection status={page === 22 ? 'active' : page > 22 ? 'past' : 'future'} onNext={() => goTo(23)} />
-      <TourSection status={page === 23 ? 'active' : page > 23 ? 'past' : 'future'} onNext={() => goTo(24)} />
+      <TourSection 
+        status={page === 23 ? 'active' : page > 23 ? 'past' : 'future'} 
+        onNext={() => goTo(24)} 
+        onOpenSolaris={() => setSolarisOpen(true)}
+        onOpenVertigo={() => setVertigoOpen(true)}
+      />
       <ContactSection status={page === 24 ? 'active' : page > 24 ? 'past' : 'future'} onBackToTop={() => goTo(0)} />
+
+      {/* Root-Level 360 Virtual Tour overlays (Prevents nested transform fixed-positioning Webkit bugs!) */}
+      <SolarisTourModal isOpen={solarisOpen} onClose={() => setSolarisOpen(false)} />
+      <VertigoTourModal isOpen={vertigoOpen} onClose={() => setVertigoOpen(false)} />
     </main>
   )
 }

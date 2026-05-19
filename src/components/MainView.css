@@ -10,6 +10,12 @@
   background: #fff;
 }
 
+.mv-hidden {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 /* ── Video ─────────────────────────────────────── */
 .mv-video {
   position: absolute;
@@ -226,6 +232,10 @@
    Mobile Stacked Responsiveness
    ========================================================= */
 @media (max-width: 768px) {
+  .main-view {
+    height: 100dvh !important;
+  }
+
   .mv-video {
     width: 100% !important;
     height: 48% !important;
@@ -245,12 +255,18 @@
     transform: translateY(0) !important;
   }
 
+  /* On page 2 (About Realistic), the about image panel takes 100% height since text is hidden! */
+  .main-view--page-2 .mv-about-img {
+    height: 100% !important;
+  }
+
   .mv-panel {
     top: 48% !important;
     height: 52% !important;
     width: 100% !important;
     left: 0 !important;
     background: #faf9f7;
+    transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.95s ease;
   }
 
   .mv-panel--page-0 {
@@ -267,10 +283,11 @@
     left: 0 !important;
     transform: translateY(100%) !important;
     opacity: 0 !important;
+    pointer-events: none !important;
   }
 
   .mv-content {
-    padding: 36px 24px 70px 24px !important;
+    padding: 36px 24px 76px 24px !important;
     gap: 12px !important;
     justify-content: flex-start !important;
   }
@@ -287,7 +304,8 @@
   }
 
   .mv-next-pill, .mv-next {
-    bottom: 20px !important;
+    bottom: 24px !important;
     right: 24px !important;
+    z-index: 30 !important;
   }
 }

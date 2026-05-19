@@ -5,7 +5,7 @@ import './MainView.css'
 export default function MainView({ page, goTo }) {
 
   return (
-    <div className="main-view">
+    <div className={`main-view main-view--page-${page} ${page >= 3 ? 'mv-hidden' : ''}`}>
 
       {/* ── Video background (stays on left, fades out) ── */}
       <div className={`mv-video ${page !== 0 ? 'mv-video--hidden' : ''}`}>

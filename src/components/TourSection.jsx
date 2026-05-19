@@ -5,15 +5,13 @@ import SolarisTourModal from './SolarisTourModal'
 import VertigoTourModal from './VertigoTourModal'
 import './TourSection.css'
 
-export default function TourSection({ status, onNext }) {
-  const [solarisOpen, setSolarisOpen] = useState(false)
-  const [vertigoOpen, setVertigoOpen] = useState(false)
+export default function TourSection({ status, onNext, onOpenSolaris, onOpenVertigo }) {
 
   return (
     <div className={`tour-sec ${status}`}>
 
       {/* Left panel — Solaris */}
-      <div className="tour-panel tour-panel--left" onClick={() => setSolarisOpen(true)}>
+      <div className="tour-panel tour-panel--left" onClick={onOpenSolaris}>
         <img
           src={tourSolaris}
           alt="Play Solaris Tour"
@@ -46,7 +44,7 @@ export default function TourSection({ status, onNext }) {
       </div>
 
       {/* Right panel — Vertigo */}
-      <div className="tour-panel tour-panel--right" onClick={() => setVertigoOpen(true)}>
+      <div className="tour-panel tour-panel--right" onClick={onOpenVertigo}>
         <img
           src={tourVertigo}
           alt="Play Vertigo Tour"
@@ -92,10 +90,6 @@ export default function TourSection({ status, onNext }) {
           </svg>
         </div>
       </div>
-
-      {/* 360 Virtual Tour Modals */}
-      <SolarisTourModal isOpen={solarisOpen} onClose={() => setSolarisOpen(false)} />
-      <VertigoTourModal isOpen={vertigoOpen} onClose={() => setVertigoOpen(false)} />
 
     </div>
   )
